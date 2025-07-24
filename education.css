@@ -1,0 +1,134 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+  padding: 60px 40px;
+}
+
+/* Heading */
+.heading {
+  text-align: center;
+  font-size: 3rem;
+  color: #fddb3a;
+  margin-bottom: 60px;
+  position: relative;
+  animation: fadeInDown 1s ease-out;
+}
+
+.heading::after {
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: #fddb3a;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Education Container */
+.education-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Card Styles */
+.card {
+  background: #1c1c1c;
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(253, 219, 58, 0.2);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 30px rgba(253, 219, 58, 0.35);
+}
+
+.card img {
+  width: calc(100% + 40px);  /* make image wider than card */
+  height: 180px;             /* fixed height for rectangle */
+  object-fit: cover;
+  border-radius: 8px;
+  margin: -20px -20px 20px -20px;  /* stretch image beyond card padding */
+  border: 3px solid #fddb3a;
+  box-shadow: 0 4px 15px rgba(253, 219, 58, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.02);
+}
+
+.card h2 {
+  color: #fddb3a;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  margin-bottom: 6px;
+  color: #e0e0e0;
+}
+
+.status {
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.status.pursuing {
+  color: #0f0;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.status.completed {
+  color: #fddb3a;
+  background-color: rgba(253, 219, 58, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .education-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}

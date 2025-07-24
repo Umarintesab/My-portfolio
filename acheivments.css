@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* dark blue gradient */
+  color: #fff;
+  padding: 60px 40px;
+  line-height: 1.6;
+  animation: fadeIn 1s ease-out;
+}
+
+.achievements-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(253, 219, 58, 0.2);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #fddb3a;
+  text-align: center;
+  margin-bottom: 40px;
+  text-decoration: underline;
+}
+
+.achievement {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 5px solid #fddb3a;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.achievement:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.achievement h2 {
+  color: #fddb3a;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.achievement p {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.btn {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  padding: 12px 24px;
+  background-color: #fddb3a;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #fff;
+  transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
