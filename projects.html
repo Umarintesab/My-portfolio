@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #f8f5e9;
+            padding-top: 100px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0f2027;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #faf4d7;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 6px 10px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #fddb3a;
+            transition: width 0.3s ease;
+            margin-top: 4px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fddb3a;
+            margin: 40px 0 30px;
+            text-decoration: underline;
+        }
+
+        .projects-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .project {
+            background-color: #1a1a2e;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(255, 219, 58, 0.3);
+        }
+
+        .project:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .project:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .project:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .project img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #fddb3a;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project img:hover {
+            transform: scale(1.03);
+        }
+
+        .project h1 {
+            color: #fddb3a;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project p {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .projects-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project {
+                width: 90%;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .download {
+            background-color: #fddb3a;
+            color: #000;
+        }
+
+        .download:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .coming-soon {
+            background-color: #999;
+            color: #eee;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .link-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn-link {
+            background-color: #fddb3a;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-link:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2001;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            height: 4px;
+            background: #fddb3a;
+            border-radius: 2px;
+        }
+
+        /* Fullscreen Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 32, 39, 0.97);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2000;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu a {
+            color: #eee5ba;
+            font-size: 1.8rem;
+            text-decoration: none;
+            margin: 20px 0;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive: Show on mobile only */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="About.html">About Me</a>
+        <a href="education.html">My Education</a>
+        <a href="Skills.html">My Skills</a>
+        <a href="projects.html">My Projects</a>
+        <a href="acheivements.html">My Achievements</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Header -->
+    <header>My Projects</header>
+
+    <!-- Projects Section -->
+    <div class="projects-wrapper">
+        <div class="project">
+            <img src="fit.PNG" alt="Self Fit">
+            <h1>Self Fit</h1>
+            <p>A Java-based fitness app to monitor workouts, calculate BMI, and track progress. Designed for personal
+                goal tracking.</p>
+            <a href="SelfFit.pdf" download class="btn download">Download Report</a>
+        </div>
+
+        <div class="project">
+            <img src="far.PNG" alt="Farm Master">
+            <h1>Farm Master</h1>
+            <p>A desktop farm management system to handle crop schedules, resource allocation, and productivity
+                planning.</p>
+            <a href="FarmMaster.pdf" download class="btn download">Download Report</a>
+        </div>
+
+        <div class="project">
+            <img src="jena.png" alt="Jenavieve AI">
+            <h1>Jenavieve</h1>
+            <p>Your AI writing assistant. Generates smart, professional content effortlessly and quickly using advanced
+                intelligence.</p>
+            <button class="btn coming-soon" disabled>Coming Soon</button>
+        </div>
+    </div>
+    <div class="link-container">
+        <a href="index.html" class="btn-link">Back to Home</a>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("show");
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Optional: Auto close menu when a link is clicked
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').style.display = 'none';
+            });
+        });
+    </script>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Full Screen Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="About.html">About Me</a>
+        <a href="education.html">My Education</a>
+        <a href="Skills.html">My Skills</a>
+        <a href="projects.html">My Projects</a>
+        <a href="acheivements.html">My Achievements</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</body>
+
+</html>
