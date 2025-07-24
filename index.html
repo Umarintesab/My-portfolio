@@ -158,21 +158,90 @@
         margin-bottom: 30px;
       }
     }
+    /* Mobile Nav Styles */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  z-index: 1100;
+}
+
+.hamburger .line {
+  height: 3px;
+  width: 25px;
+  background-color: #fddb3a;
+  margin: 5px 0;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: flex-start;
+    padding-left: 60px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #0f2027;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
   </style>
 </head>
 
 <body>
 
   <!-- Navigation bar -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="About.html">About Me</a>
-    <a href="education.html">My Education</a>
-    <a href="Skills.html">My Skills</a>
-    <a href="projects.html">My Projects</a>
-    <a href="acheivements.html">My Achievements</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <!-- Navigation Bar -->
+<nav>
+  <div class="nav-container">
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="About.html">About Me</a>
+      <a href="education.html">My Education</a>
+      <a href="Skills.html">My Skills</a>
+      <a href="projects.html">My Projects</a>
+      <a href="acheivements.html">My Achievements</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
 
   <!-- Home Section -->
   <div class="container">
@@ -235,6 +304,13 @@
 
     typeEffect();
   </script>
+  <script>
+  function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("active");
+  }
+</script>
+
 </body>
 
 </html>
